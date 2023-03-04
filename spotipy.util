@@ -1,0 +1,14 @@
+import spotipy
+import spotipy.util as util  
+
+## Credentials Required for Spotify API ## 
+clientID = '131a683b41d7403fa4e272191a5bb574' #Yvonne's CID
+clientSecret = 'a5d739de746e405b8e9873672a6ea834' #Yvonne's CS
+redirectUri = 'http://localhost:5000/callback' #I changed the port from the terminal by [lsof -i:5000]
+
+scope = 'user-read-private user-read-email playlist-modify-public user-read-playback-state user-read-currently-playing' #I chose almost all (https://spotipy.readthedocs.io/en/2.22.1/#api-reference)
+username = 'elgatosalado' #Can be blank
+myList = []
+songID = [] 
+token = util.prompt_for_user_token(username, scope, clientID, clientSecret, redirectUri) 
+spotify = spotipy.Spotify(auth = token)
